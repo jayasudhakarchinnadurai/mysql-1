@@ -46,9 +46,9 @@ INSERT INTO Genre
 VALUES(1, 1, "Action"),
 VALUES(2, 2, "Romance"),
 VALUES(3, 3, "Thriller"),
-VALUES(4, 3, "Drama"),
-VALUES(5, 1, "Horror"),
-VALUES(6, 2, "western");
+VALUES(4, 4, "Drama"),
+VALUES(5, 5, "Horror"),
+VALUES(6, 6, "western");
 
 
 4. Artist can have multiple skills
