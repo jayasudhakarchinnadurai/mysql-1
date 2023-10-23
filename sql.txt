@@ -1,0 +1,107 @@
+-----------------------------IMDB Design a DB for IMDB ---------------------------------------
+-- 1. Movie should have multiple media(Video or Image)
+-- 2. Movie can belongs to multiple Genre
+-- 3. Movie can have multiple reviews and Review can belongs to a user
+-- 4. Artist can have multiple skills 5. Artist can perform multiple role in a single film
+
+
+
+CREATE TABLE Movie(
+    Movie_id INTEGER PRIMARY KEY,
+    Movie_Name TEXT,
+    Movie_Artist TEXT
+);
+
+INSERT INTO Movie
+VALUES(1, "The Avenger",   "Robert Downey Jr.");
+VALUES(2, "Titanic",        "Kate Winslet");
+VALUES(3, "The Dark Knight", "Heath Ledger");
+
+
+1. Movie should have multiple media(Video or Image)
+------------------------------------------------------------------------------------------------
+
+CREATE TABLE Movie_details(
+    Moviedetails_id INTEGER PRIMARY KEY,
+    Movie_id INTEGER FOREIGN KEY,
+    Media VARCHAR
+);
+
+INSERT INTO Movie_details
+VALUES(1, 1, "C:\The Avenger poster\The Avenger 1.jpg"),
+VALUES(2, 2, "C:\Titanic\Titanic 1.jpg"),
+VALUES(3, 3, "C:\The Dark Knight poster\The Dark Knight 1.jpg"),
+
+
+
+2. Movie can belongs to multiple Genre
+-------------------------------------------------------------------------------------------------
+
+CREATE TABLE Genre(
+    Genre_id INTEGER PRIMARY KEY,
+    Movie_id INTEGER FOREIGN KEY,
+    Movie_genre TEXT
+);
+INSERT INTO Genre
+VALUES(1, 1, "Action"),
+VALUES(2, 2, "Romance"),
+VALUES(3, 3, "Thriller"),
+VALUES(4, 3, "Drama"),
+VALUES(5, 1, "Horror"),
+VALUES(6, 2, "western");
+
+
+4. Artist can have multiple skills
+-----------------------------------------------------------------------------------------------
+CREATE TABLE Artist(
+    Artist_id INTEGER PRIMARY KEY,
+    Movie_id INTEGER FOREIGN KEY,
+    Skills TEXT,
+    Role VARCHAR
+);
+INSERT INTO Artist
+VALUES(1, 1, "Actor", "Iron man"),
+VALUES(2, 1, "Directed by", "Joss Whedon"),
+VALUES(3, 1, "Screenplay by", "Zak Penn"),
+VALUES(4, 1, "Story by", "Joss whedon"),
+VALUES(5, 1, "Music by", "Alan Silvestri"),
+VALUES(6, 1, "Produced by", "Kevin Feige"),
+VALUES(7, 1, "Language", "English"),
+
+
+5.Artist can perform multiple role in a single film
+-----------------------------------------------------------------------------------------------
+INSERT INTO Artist
+(Artist_id, Movie_id, Role)
+VALUES(8, 1, "Hero"),
+VALUES(9, 1, "Comedian");
+
+
+   3. Movie can have multiple reviews
+-----------------------------------------------------------------------------------------------
+
+CREATE TABLE Review(
+    Rating_id INTEGER PRIMARY KEY,
+    Review TEXT
+);
+INSERT INTO Review
+VALUES(1,"Flop"),
+VALUES(2,"Average"),
+VALUES(3,"Hit"),
+VALUES(4,"Blockbuster");
+
+
+ Review can belongs to a user
+-------------------------------------------------------------------------------------------------
+
+CREATE TABLE User_details(
+    Reviewer_id INTEGER PRIMARY KEY,
+    Movie_id INTEGER FOREIGN KEY,
+    User_name TEXT,
+    User_email VARCHAR,
+    Rating_id INTEGER FOREIGN KEY,
+);
+INSERT INTO User_details
+VALUES(1, 1, "Robert", "Robert@gmail.com", 4),
+VALUES(2, 1, "john", "john@gmail.com", 3),
+VALUES(3, 1, "smith", "smith@gmail.com", 2),
