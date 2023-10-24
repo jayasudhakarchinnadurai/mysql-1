@@ -44,11 +44,11 @@ CREATE TABLE Genre(
 );
 INSERT INTO Genre
 VALUES(1, 1, "Action"),
-VALUES(2, 2, "Romance"),
-VALUES(3, 3, "Thriller"),
-VALUES(4, 4, "Drama"),
-VALUES(5, 5, "Horror"),
-VALUES(6, 6, "western");
+VALUES(2, 1, "Romance"),
+VALUES(3, 1, "Thriller"),
+VALUES(4, 1, "Drama"),
+VALUES(5, 1, "Horror"),
+VALUES(6, 1, "western");
 
 
 4. Artist can have multiple skills
@@ -56,25 +56,35 @@ VALUES(6, 6, "western");
 CREATE TABLE Artist(
     Artist_id INTEGER PRIMARY KEY,
     Movie_id INTEGER FOREIGN KEY,
-    Skills TEXT,
-    Role VARCHAR
+    Skills_Role  TEXT,
+    Skills VARCHAR
+    
 );
 INSERT INTO Artist
 VALUES(1, 1, "Actor", "Iron man"),
-VALUES(2, 1, "Directed by", "Joss Whedon"),
-VALUES(3, 1, "Screenplay by", "Zak Penn"),
-VALUES(4, 1, "Story by", "Joss whedon"),
-VALUES(5, 1, "Music by", "Alan Silvestri"),
-VALUES(6, 1, "Produced by", "Kevin Feige"),
+VALUES(2, 1, "Directed ", "Joss Whedon"),
+VALUES(3, 1, "Screenplay ", "Zak Penn"),
+VALUES(4, 1, "Story ", "Joss whedon"),
+VALUES(5, 1, "Music ", "Alan Silvestri"),
+VALUES(6, 1, "Produced ", "Kevin Feige"),
 VALUES(7, 1, "Language", "English"),
 
 
 5.Artist can perform multiple role in a single film
 -----------------------------------------------------------------------------------------------
-INSERT INTO Artist
-(Artist_id, Movie_id, Role)
-VALUES(8, 1, "Hero"),
-VALUES(9, 1, "Comedian");
+
+CREATE TABLE Artist_Role(
+Artist_Role_id INTEGER PRIMARY KEY,
+Movie_id INTEGER FOREIGN KEY
+Artist_Name TEXT
+Role VARCHAR
+
+
+)
+INSERT INTO Artist_Role
+(Artist_id, Movie_id, Artist_Name Role)
+VALUES(1, 1,"Robert Downey Jr.", "Hero"),
+VALUES(2, 1,"Robert Downey Jr.", "Comedian");
 
 
    3. Movie can have multiple reviews
